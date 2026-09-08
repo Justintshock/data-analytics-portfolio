@@ -32,3 +32,22 @@ GROUP BY
     p.product_name,
     p.created_at
 ORDER BY revenue_per_day DESC
+
+------------------------------------------------------------------------------
+-- Question 3:
+-- Which products generate the most gross profit,
+-- and which have the highest gross profit margins?
+
+SELECT p.product_name,
+    ROUND(SUM(oi.price_usd), 2) AS total_revenue,
+    ROUND(SUM(oi.cogs_usd), 2) AS total_cogs,
+    ROUND(SUM(oi.price_usd - oi.cogs_usd), 2) AS gross_profit,
+    ROUND(100.0 * SUM(oi.price_usd - oi.cogs_usd) / SUM(oi.price_usd),2)
+  AS gross_margin_pct
+    FROM "order_items.csv" AS oi
+      JOIN "products.csv" AS p
+        ON oi.product_id = p.product_id
+          GROUP BY p.product_name
+            ORDER BY gross_profit DESC
+--------------------------------------------------------------------------------------
+
