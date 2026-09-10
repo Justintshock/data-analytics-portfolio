@@ -55,4 +55,19 @@ SELECT
 FROM "ecommerce_sales_data .csv"
 
 
+-- Question 6:
+-- How have sales and profit performed by year?
+
+
+SELECT
+    YEAR(CAST("Order Date" AS DATE)) AS year,
+    ROUND(SUM("Sales"), 2) AS total_sales,
+    ROUND(SUM("Profit"), 2) AS total_profit
+      FROM "ecommerce_sales_data .csv"
+        GROUP BY YEAR(CAST("Order Date" AS DATE))
+          ORDER BY year
+
+
+
+
 
