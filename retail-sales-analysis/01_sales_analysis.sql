@@ -44,3 +44,15 @@ SELECT
     ORDER BY total_sales DESC
       LIMIT 5
 
+
+-- Question 5:
+-- What is the average sales value and profit per record?
+
+
+SELECT
+    ROUND(AVG("Sales"), 2) AS average_sales,
+    ROUND(AVG("Profit"), 2) AS average_profit
+FROM "ecommerce_sales_data .csv"
+
+
+
