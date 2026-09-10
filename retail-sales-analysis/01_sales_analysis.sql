@@ -32,3 +32,15 @@ FROM "ecommerce_sales_data .csv"
   GROUP BY "Region"
     ORDER BY total_sales DESC
 
+-- Question 4:
+-- Which products generate the most sales?
+
+
+SELECT
+    "Product Name",
+    ROUND(SUM("Sales"), 2) AS total_sales
+  FROM "ecommerce_sales_data .csv"
+    GROUP BY "Product Name"
+    ORDER BY total_sales DESC
+      LIMIT 5
+
